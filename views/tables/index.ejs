@@ -1,0 +1,93 @@
+<%- include('../partials/head'); %>
+
+  <body>
+    <%- include('../partials/header'); %>
+      <div class="container mt-5 pt-2">
+        <main class="mt-3 pt-3">
+          <% if (messages.success) { %>
+            <div class="alert alert-success" role="alert">
+              <%- messages.success %>
+            </div>
+            <% } %>
+
+              <% if (messages.error) { %>
+                <div class="alert alert-danger" role="alert">
+                  <%- messages.error %>
+                </div>
+                <% } %>
+                  
+                <form class="d-flex mb-2 col-sm-3 ms-auto">
+                  <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Buscar socio" id="buscar" onkeyup="buscar()"/>
+                    <button class="btn btn-primary" type="submit">
+                      <i class="icon ion-md-search"></i>
+                    </button>
+                  </div>
+                </form>
+
+                  <div class="card">
+                    <div class="card-header">
+                      <ul class="nav nav-pills w-100">
+                        <li class="nav-pill active">
+                          <span><i class="icon ion-md-bookmarks"></i> Informe de Multas</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="card-body">
+
+                      <% if(data.length) { %>
+                        <table class="table" id="table" data-sort="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Stand</th>
+                              <th scope="col">Nombres</th>
+                              <th scope="col">Apellido Paterno</th>
+                              <th scope="col">Deuda Pendiente</th>
+                              
+                              <th width="200px">Opciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% for(var i=0; i< data.length; i++) { %>
+                              <tr>
+                                <th scope="row">
+                                  <%= (i+1) %>
+                                </th>
+                                <td>
+                                  <%= data[i].stand_numero%>
+                                </td>
+                                <td>
+                                  <%= data[i].socio_nombres%>
+                                </td>
+                                <td>
+                                  <%= data[i].socio_ap_paterno%>
+                                </td>
+                                <td>
+                                  S/. <%= data[i].actividad_sancion_importe%>
+                                </td>
+                                
+                                
+                                <td>
+                                  <a class="btn btn-info" href="#">Cobrar multa</a>
+                                </td>
+                              </tr>
+                              <% } %>
+                          </tbody>
+                        </table>
+                        <% } %>
+                          <!-- if result is empty -->
+                          <% if(!data.length) { %>
+                            <p class="text-center">No book found!</p>
+                            <% } %>
+                    </div>
+                  </div>
+
+      </div>
+      </main>
+      </div>
+      
+      <%- include('../partials/footer'); %>
+  </body>
+
+  </html>

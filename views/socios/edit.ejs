@@ -1,0 +1,118 @@
+<%- include('../partials/head'); %>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+body,
+button {
+  font-family: "Inter", sans-serif;
+}
+:root {
+  --offcanvas-width: 270px;
+  --topNavbarHeight: 56px;
+}
+.sidebar-nav {
+  width: var(--offcanvas-width);
+}
+@media (min-width: 992px) {
+  body {
+    overflow: auto !important;
+  }
+  main {
+    margin-left: var(--offcanvas-width);
+  }
+  .offcanvas-backdrop::before {
+    display: none;
+  }
+  .sidebar-nav {
+    -webkit-transform: none;
+    transform: none;
+    visibility: visible !important;
+    height: calc(100% - var(--topNavbarHeight));
+    top: var(--topNavbarHeight);
+  }
+}
+.container {
+  max-width: 1900px;
+}                       
+</style>
+  <body>
+    <%- include('../partials/header'); %>
+      <div class="container">
+        <main class="mt-3 pt-3">
+          <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-2" src="" alt="AQUI VA UNA IMAGEM" width="180"
+              height="180">
+            <h2>Editar Socio</h2>
+            <p class="lead">Hacer cambios en los datos del socio
+            </p>
+          </div>
+          <div class="col-md-7 col-lg-8 mx-auto">
+            <h4 class="mb-3">Complete la información</h4>
+            <form method="post" action="/socios/update/<%= socio_id %>">
+              <div class="row g-3 card-body">s
+                <div class="col-sm-4">
+                  <label for="firstName" class="form-label">Nombres<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="socio_nombres" value="<%= socio_nombres %>" required>
+                  <div class="invalid-feedback">
+                    Campo Requerido
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <label for="lastName" class="form-label">Apellido Paterno<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="socio_ap_paterno" value="<%= socio_ap_paterno %>" required>
+                  <div class="invalid-feedback">
+                    Campo Requerido
+                  </div>
+                </div>
+
+                <div class="col-sm-4">
+                  <label for="lastName" class="form-label">Apellido Materno<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="socio_ap_materno" value="<%= socio_ap_materno %>" required>
+                  <div class="invalid-feedback">
+                    Campo Requerido
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <label for="username" class="form-label">Fecha de Nacimiento<span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" name="socio_fecha_nacimiento" required value="<%= socio_fecha_nacimiento %>">
+                  <div class="invalid-feedback">
+                    Campo requerido.
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <label for="lastName" class="form-label">Teléfono<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="socio_telefono" value="<%= socio_telefono %>" required>
+                  <div class="invalid-feedback">
+                    Campo Requerido
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <label for="lastName" class="form-label">Código<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" name="socio_codigo" value="<%= socio_codigo %>" required>
+                    <div class="invalid-feedback">
+                      Campo Requerido
+                    </div>
+                  </div>
+
+                <div class="col-12">
+                  <label for="address" class="form-label">Dirección<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" name="socio_direccion" placeholder="Urb. Los Olivos Nro. 345" value="<%= socio_direccion %>" required>
+                  <div class="invalid-feedback">
+                    Campo Requerido.
+                  </div>
+                </div>     
+              </div>
+              <hr class="my-4">
+              <button class="w-100 btn btn-primary btn-lg" type="submit">Actualizar Cambios</button> 
+            </form>
+          </div>
+      </div>
+      </main>
+      </div>
+      
+      <%- include('../partials/footer'); %>
+  </body>
+  </html>

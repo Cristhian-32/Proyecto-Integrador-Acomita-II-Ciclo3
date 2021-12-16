@@ -1,0 +1,99 @@
+<%- include('../partials/head'); %>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+  <body>
+    <%- include('../partials/header'); %>
+      <div class="container mt-5 pt-2">
+        <main class="mt-3 pt-3">
+          <% if (messages.success) { %>
+            <div class="alert alert-success" role="alert">
+              <%- messages.success %>
+            </div>
+            <% } %>
+
+              <% if (messages.error) { %>
+                <div class="alert alert-danger" role="alert">
+                  <%- messages.error %>
+                </div>
+                <% } %>
+                  
+                <form class="d-flex mb-2 col-sm-3 ms-auto">
+                  <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Buscar socio" id="buscar" onkeyup="buscar()"/>
+                    <button class="btn btn-primary" type="submit">
+                      <i class="icon ion-md-search"></i>
+                    </button>
+                  </div>
+                </form>
+
+                  <div class="card">
+                    <div class="card-header">
+                      <ul class="nav nav-pills w-100">
+                        <span><i class="icon ion-md-people"></i> Lista de socios</span>
+                      </ul>
+                    </div>
+                    <div class="card-body">
+
+                      <% if(data.length) { %>
+                        <table class="table table-striped" id="example " style="width:100%">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Código</th>
+                              <th scope="col">Nombres</th>
+                              <th scope="col">Apellido Paterno</th>
+                              <th scope="col">Apellido Materno</th>
+                              <th scope="col">Dirección</th>
+                              <th scope="col">Telefono</th>
+                              <th width="200px">Opciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% for(var i=0; i< data.length; i++) { %>
+                              <tr>
+                                <th scope="row">
+                                  <%= (i+1) %>
+                                </th>
+                                <td>
+                                  <%= data[i].socio_codigo%>
+                                </td>
+                                <td>
+                                  <%= data[i].socio_nombres%>
+                                </td>
+                                <td>
+                                  <%= data[i].socio_ap_paterno%>
+                                </td>
+                                <td>
+                                  <%= data[i].socio_ap_materno%>
+                                </td>
+                                <td>
+                                  <%= data[i].socio_direccion%>
+                                </td>
+                                <td>
+                                  <%= data[i].socio_telefono%>
+                                </td>
+                                <td>
+                                  <a class="btn btn-success edit" href="../socios/edit/<%=data[i].socio_id%>">Editar</a>
+                                  <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')"
+                                    href="../socios/delete/<%=data[i].socio_id%>">Eliminar</a>
+                                </td>
+                              </tr>
+                              <% } %>
+                          </tbody>
+                        </table>
+                        <% } %>
+                          <!-- if result is empty -->
+                          <% if(!data.length) { %>
+                            <p class="text-center">No book found!</p>
+                            <% } %>
+                    </div>
+                  </div>
+
+      </div>
+      </main>
+      </div>
+      <%- include('../partials/footer'); %>
+      <script src="../javascripts/script.js"></script>
+  </body>
+
+  </html>

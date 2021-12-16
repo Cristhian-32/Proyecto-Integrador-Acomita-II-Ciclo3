@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>LOGIN</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <link href="../stylesheets/style.css" rel="stylesheet">
+
+</head>
+
+<body class="login-page" background="../images/juliacaPA.jpg">
+    
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+    
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="login-box">
+        <div class="logo">
+            <a href=""><font color="#8aff54"><b>ACOMITA</b></font>2</a>
+            <small><font color="#54ff84">Plaza Internacional Túpac Amaru</font></small>
+        </div>
+        <div class="row content">
+            <div class="col-md-6 mb-3 text-center">
+                <img src="../images/user.png" alt="">
+            </div>
+            <div class="col-md-6">
+                <h3 class="sing-text mb-3">INICIAR SESIÓN</h3>
+                <form method="post" action="/iniciar">
+                    <div class="form-group">
+                        <span class="input-group-addon"> 
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" placeholder="Nombre de Usuario" name="user" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="input-group-addon"> 
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8 p-t-5 mt-4">
+                            <input type="checkbox" name="recordar" id="recordar" class="form-check-input">
+                            <label class="form-check-label" for="recordar">Recordar</label>
+                        </div>
+                        <button type="submit" class="btn btn-class btn-block mt-4"><i class="fas fa-sign-in-alt"></i> Ingresar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</body>
+
+</html>
